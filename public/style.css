@@ -5,7 +5,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .homepage-nav {
@@ -58,4 +58,42 @@
 
 .search-input {
     padding: 3px 5px;
+}
+
+.main-homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 2rem 5rem;
+    gap: 22px;
+}
+
+.welcome-section h3 {
+    font-size: 1.4em;
+    padding-bottom: 2.5rem;
+    color: black;
+}
+
+.welcome-section {
+    padding-bottom: 3rem;
+    color: #86888A;
+}
+
+.product-panel,
+.category-panel {
+    box-sizing: border-box;
+    cursor: pointer;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient( rgba(255, 238, 238, 0.9), rgba(160, 255, 166, 0.9) );
+    transition: transform 0.3s ease-in-out;
+}
+.product-panel:hover,
+.category-panel:hover {
+    transform: translateY(-5px);
 }
