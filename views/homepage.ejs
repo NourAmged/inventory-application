@@ -7,30 +7,7 @@
     <title>Fruits</title>
   </head>
   <body>
-    <nav class="homepage-nav">
-      <div class="nav-content">
-        <span>
-          <img
-            src="fruits-fruit-svgrepo-com.svg"
-            alt="logo"
-            width="34px"
-            height="34px"
-          />
-          <div>Fruits</div>
-        </span>
-        <p>Home</p>
-        <p>Products</p>
-        <p>Categories</p>
-      </div>
-      <div>
-        <input
-          class="search-input"
-          type="text"
-          placeholder="Search Products..."
-        />
-        <button class="search-btn">Search</button>
-      </div>
-    </nav>
+    <%- include('navbar') %>
     <main class="main-homepage">
       <section class="welcome-section">
         <h3>Welcome</h3>
@@ -41,6 +18,7 @@
           Give it a try and be sure to leave a review in the app store!
         </p>
       </section>
+
       <section class="product-panel">
         <h2>View Products &#8594;</h2>
       </section>

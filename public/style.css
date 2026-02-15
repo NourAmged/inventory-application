@@ -33,12 +33,14 @@
 }
 
 
-.nav-content p {
+.nav-content a {
+    text-decoration: none;
+    color: black;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
-.nav-content p:hover {
+.nav-content a:hover {
     color: gray;
 }
 

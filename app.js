@@ -3,7 +3,7 @@ require('dotenv').config();
 const path = require("node:path");
 const express = require("express");
 const indexRouter = require("./routes/indexRouter");
-
+const productsRouter = require("./routes/productsRouter")
 const app = express();
 
 const PORT = process.env.PORT;
@@ -18,6 +18,7 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
+app.use("/products", productsRouter)
 
 app.listen(PORT, () => {
     console.log(`App is running on localhost:${PORT}`);
