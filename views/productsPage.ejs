@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Products</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include("navbar") %>
-</body>
+    <main class="main-products">
+      <header class="products-header">
+        <span>Products</span>
+        <button class="add-product-btn">Add a Product</button>
+      </header>
+      <div class="products-container">
+        <div class="sidebar">
+          <div class="sort-price">
+            <h5>Sort By Price</h5>
+            <input
+              type="radio"
+              id="ascending"
+              name="sort-by"
+              value="ascending"
+            />
+            <label for="sort-by">Ascending</label><br />
+            <input
+              type="radio"
+              id="  descending"
+              name="sort-by"
+              value="descending"
+            />
+            <label for="sort-by">Descending</label>
+          </div>
+          <div class="sort-name">
+            <h5>Sort By Name</h5>
+            <input
+              type="radio"
+              id="ascending"
+              name="sort-by"
+              value="ascending"
+            />
+            <label for="sort-by">Ascending</label><br />
+            <input
+              type="radio"
+              id="  descending"
+              name="sort-by"
+              value="descending"
+            />
+            <label for="sort-by">Descending</label>
+          </div>
+          <div class="category-filter">
+            <h5>Filter By Category:</h5>
+            
+          </div>
+          <button>Apply Filters</button>
+        </div>
+        <div></div>
+      </div>
+    </main>
+  </body>
 </html>
