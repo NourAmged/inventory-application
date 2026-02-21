@@ -1,0 +1,16 @@
+<div class="product">
+  <img
+    src="<%= product.image %>"
+    alt="product-image"
+    width="48px"
+    height="48px"
+  />
+  <div class="price">
+    <p><%= product.name %></p>
+    <p>$<%= product.price %></p>
+  </div>
+  <div class="quantity">Quantity: <%= product.quantity %></div>
+  <div class="category <%= product.category.toLowerCase() %>">
+    <%= product.category %>
+  </div>
+</div>
