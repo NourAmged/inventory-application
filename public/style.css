@@ -164,6 +164,12 @@
     align-items: center;
     border-radius: 5px;
     gap: 0.8rem;
+    transition: all 0.3s ease;
+}
+    
+.product:hover {
+    box-shadow: rgba(0, 0, 0, 0.80) 0px 0px 4px;
+    cursor: pointer;
 }
 
 .price {

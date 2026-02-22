@@ -1,4 +1,4 @@
-<div class="product">
+<div class="product" onclick="location.href = '/products/<%= product.id %>'">
   <img
     src="<%= product.image %>"
     alt="product-image"
@@ -10,7 +10,10 @@
     <p>$<%= product.price %></p>
   </div>
   <div class="quantity">Quantity: <%= product.quantity %></div>
-  <div class="category" style="background-color: <%= categoryColor[product.category] %>">
+  <div
+    class="category"
+    style="background-color: <%= categoryColor[product.category] %>"
+  >
     <%= product.category %>
   </div>
 </div>
