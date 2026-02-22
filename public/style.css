@@ -1,8 +1,5 @@
 :root {
     --light-green: hsl(136, 54%, 83%);
-    --bakery-color: #ffc26c;
-    --fruits-color: #FF0062;
-    --dairy-color: #FFFEEB;
 }
 
 * {
@@ -178,23 +175,13 @@
     font-size: 0.7em;
 }
 
-.bakery {
-    background-color: var(--bakery-color);
-}
-
-.fruits {
-    background-color: var(--fruits-color);
-}
-
-.dairy {
-    background-color: var(--dairy-color);
-}
 
 .quantity {
     display: flex;
     justify-content: flex-start;
     width: 100%;
     font-size: 0.7em;
+    padding-bottom: 5px;
 }
 
 .category {

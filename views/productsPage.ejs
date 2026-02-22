@@ -38,7 +38,7 @@
       </div>
       <div class="products">
         <% products.forEach((product) => { %>
-        <%- include('product', {product: product}); %>
+        <%- include('product', {product: product, categoryColor: categoryColor}); %>
         <%});%>
       </div>
     </div>

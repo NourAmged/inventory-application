@@ -10,7 +10,7 @@
     <p>$<%= product.price %></p>
   </div>
   <div class="quantity">Quantity: <%= product.quantity %></div>
-  <div class="category <%= product.category.toLowerCase() %>">
+  <div class="category" style="background-color: <%= categoryColor[product.category] %>">
     <%= product.category %>
   </div>
 </div>
