@@ -113,7 +113,8 @@
     font-weight: 550;
 }
 
-.add-product-btn {
+.add-product-btn,
+.return-btn {
     background-color: var(--light-green);
     box-shadow: rgba(0, 0, 0, 0.36) 0px 1px 3px;
     color: black;
@@ -166,7 +167,7 @@
     gap: 0.8rem;
     transition: all 0.3s ease;
 }
-    
+
 .product:hover {
     box-shadow: rgba(0, 0, 0, 0.80) 0px 0px 4px;
     cursor: pointer;
@@ -200,4 +201,54 @@
     border-radius: 0 0 5px 5px;
     width: 112%;
     margin: -9px;
+}
+
+.main-product {
+    padding: 4rem 6rem;
+}
+
+.product-item {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-grow: 1;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.144);
+}
+
+.product-info {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.product-name-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.product-category {
+    border-radius: 8px;
+    padding: 3px 5px;
+    width: fit-content;
+}
+
+.edit-delete-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.edit-product-btn,
+.delete-product-btn {
+    background-color: var(--light-green);
+    padding: 3px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.36) 0px 1px 3px;
 }

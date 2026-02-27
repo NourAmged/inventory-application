@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title><%= product.name %></title>
+  </head>
+  <body>
     <%- include("navbar") %>
-</body>
+    <main class="main-product">
+      <button class="return-btn" onclick="location.href = '/products'">
+        << Return to Products
+      </button>
+      <div class="product-item">
+        <img src="<%= product.image %>" alt="image product" height="300" />
+        <div class="product-info">
+          <p class="product-name-price">
+            <span><%= product.name %></span>
+            <span>$<%= product.price %></span>
+          </p>
+          <p class="product-category" style= "background-color: <%= categoryColor %>"><%= product.category %></p>
+          <p><%= product.description %></p>
+          <p>Quantity: <%= product.quantity %></p>
+          <div class="edit-delete-container">
+            <button class="edit-product-btn">Edit</button>
+            <button class="delete-product-btn">Delete</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
