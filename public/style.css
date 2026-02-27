@@ -130,7 +130,10 @@
 }
 
 .products-container {
-    display: flex;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 1rem;
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.144);
 }
@@ -150,7 +153,7 @@
 .products {
     padding: 2rem 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 150px));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 150px));
     align-items: start;
     gap: 1rem;
 }

@@ -5,7 +5,7 @@ async function getProductPage(req, res) {
     const { id } = req.params;
 
     const [product] = await getProduct(id);
-    res.render("productPage", { product: product, categoryColor: categoryColor[product.category] });
+    res.render("productPage", { product: product, categoryColor: categoryColor[product.category], edit: false });
 
 }
 
