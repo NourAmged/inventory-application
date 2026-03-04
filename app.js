@@ -1,7 +1,9 @@
 require('dotenv').config();
 
+
 const path = require("node:path");
 const express = require("express");
+const methodOverride = require('method-override');
 
 const indexRouter = require("./routes/indexRouter");
 const productsRouter = require("./routes/productsRouter")
@@ -17,6 +19,7 @@ const assetsPath = path.join(__dirname, "public");
 
 app.use(express.static(assetsPath));
 
+app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
