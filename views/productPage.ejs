@@ -14,14 +14,14 @@
     <button class="return-btn" onclick="location.href = '/products'">
       << Return to Products </button>
         <div class="product-item">
-          <img src="<%= product.image %>" alt="image product" height="300" />
+          <img src="/<%= product.image %>" alt="image product" height="300" />
           <form class="product-info" action="/products/edit?id=<%= product.id %>&_method=PATCH" method="POST">
             <p class="product-name-price">
               <span><%= product.name %></span>
               <span>
                 $
                 <% if (edit) { %>
-                <input type="number" id="price" name="price" value="<%= product.price %>" min="0.01" required>
+                <input type="number" id="price" name="price" value="<%= product.price %>" min="0" required>
                 <% } else { %>
                 <%= product.price %>
                 <% } %>
@@ -34,20 +34,27 @@
               <% } else { %>
               <%= product.description %>
               <% } %>
+              <% if (locals.errors) {%>
+            <ul>
+              <% errors.forEach(function(error) { %>
+              <li><%= error.msg %></li>
+              <% }); %>
+            </ul>
+            <% } %>
             </p>
             <p>
               Quantity:
               <% if(edit){ %>
-              <input type="number" name="quantity" id="quantity" value="<%= product.quantity %>" min="1" step="1" required>
+              <input type="number" name="quantity" id="quantity" value="<%= product.quantity %>" required>
               <% } else { %>
               <%= product.quantity %>
               <% } %>
             </p>
             <div class="edit-delete-container">
               <% if(edit){ %>
-              <button type="submit">Submit Edits</button>
+              <button type="submit" class="submit-edit-btn">Submit Edits</button>
               <% } else { %>
-              <button type="button" class="edit-product-btn" onclick="location.href = '/products/edit?id=<%= product.id %>'">Edit</button>
+              <button type="button" class="edit-product-btn" onclick="location.href = '/products/<%= product.id %>/edit'">Edit</button>
               <button class="delete-product-btn">Delete</button>
               <% } %>
             </div>

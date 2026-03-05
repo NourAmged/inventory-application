@@ -114,7 +114,8 @@
 }
 
 .add-product-btn,
-.return-btn {
+.return-btn,
+.submit-edit-btn {
     background-color: var(--light-green);
     box-shadow: rgba(0, 0, 0, 0.36) 0px 1px 3px;
     color: black;

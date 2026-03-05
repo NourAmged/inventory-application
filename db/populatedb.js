@@ -30,7 +30,7 @@ async function main() {
     await client.query(SQL);
     await client.end();
 
-    console.log("done !!!");
+    console.log("done!!!");
 
 }
 
