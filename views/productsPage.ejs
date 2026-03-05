@@ -13,26 +13,40 @@
   <main class="main-products">
     <header class="products-header">
       <span>Products</span>
-      <button class="add-product-btn">Add a Product</button>
+      <button class="add-product-btn" onclick="location.href='/products/add'">Add a Product</button>
     </header>
     <div class="products-container">
       <div class="sidebar">
-        <div class="sort-price">
-          <h5>Sort By Price</h5>
-          <input type="radio" id="ascending" name="sort-by" value="ascending" />
-          <label for="sort-by">Ascending</label><br />
-          <input type="radio" id="  descending" name="sort-by" value="descending" />
-          <label for="sort-by">Descending</label>
+      <div class="sort-price">
+        <h5>Sort By Price</h5>
+        <div>
+          <input type="radio" id="price-asc" name="price-sort" value="asc">
+          <label for="price-asc">Ascending</label>
         </div>
-        <div class="sort-name">
-          <h5>Sort By Name</h5>
-          <input type="radio" id="ascending" name="sort-by" value="ascending" />
-          <label for="sort-by">Ascending</label><br />
-          <input type="radio" id="  descending" name="sort-by" value="descending" />
-          <label for="sort-by">Descending</label>
+        <div>
+          <input type="radio" id="price-desc" name="price-sort" value="desc">
+          <label for="price-desc">Descending</label>
         </div>
+      </div>  
+      <div class="sort-name">
+        <h5>Sort By Name</h5>
+        <div>
+          <input type="radio" id="name-asc" name="name-sort" value="asc">
+          <label for="name-asc">Ascending</label>
+        </div>
+        <div>
+          <input type="radio" id="name-desc" name="name-sort" value="desc">
+          <label for="name-desc">Descending</label>
+        </div>
+      </div>
         <div class="category-filter">
           <h5>Filter By Category:</h5>
+          <% Object.keys(categoryColor).forEach(category => { %>
+          <div>
+            <input type="checkbox" name=<%= category %> id="<%= category %>"/>
+            <label class="category-label" for="<%= category %>" style="background-color: <%= categoryColor[category] %>;"><%= category %></label>
+          </div>
+          <% }); %>
         </div>
         <button>Apply Filters</button>
       </div>

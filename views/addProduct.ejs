@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>Add Product</title>
+</head>
+
+<body>
+  <%- include("navbar") %>
+  <main class="add-product-container">
+    <button class="return-btn" onclick="location.href = '/products'">
+      << Return to Products </button>
+        <form class="add-product-form" action="/products/add" method="POST" enctype="multipart/form-data">
+          <label for="product-name">Product Name:</label>
+          <input type="text" name="product-name" id="product-price" />
+
+          <label for="product-price">Product Price:</label>
+          <input type="number" name="product-price" id="product-price" min="0" />
+
+          <label for="product-category">Product Category:</label>
+          <input type="text" name="product-category" id="product-category" />
+
+          <label for="product-color">Product Category Color:</label>
+          <input type="color" id="product-color" name="product-color" value="#ff0000" />
+
+          <label for="product-image">Product Image:</label>
+          <input type="file" name="product-image" id="prodcut-image" accept="image/*">
+
+          <label for="product-description">Product Description:</label>
+          <textarea name="product-description" id="product-description" rows="6"></textarea>
+
+          <label for="product-quantity">Product Quantity: </label>
+          <input type="number" id="product-quantity" name="product-quantity" min="1" />
+          <% if (locals.errors) {%>
+          <ul>
+            <% errors.forEach(function(error) { %>
+            <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+          <% } %>
+          <button class="submit-add-product-btn" type="submit">
+            Submit Product
+          </button>
+        </form>
+  </main>
+</body>
+
+</html>

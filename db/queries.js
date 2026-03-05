@@ -1,3 +1,4 @@
+
 const pool = require('./pool');
 
 async function getProducts() {
@@ -17,9 +18,17 @@ async function patchProduct(id, data) {
     );
 }
 
+async function postProduct(productData, categoryColor) {
+    const { productName, productPrice, productCategory,
+        productColor, productImage, productDescription,
+        productQuantity } = productData;
+
+}
+
 
 module.exports = {
     getProducts,
     getProduct,
-    patchProduct
+    patchProduct,
+    postProduct 
 };
