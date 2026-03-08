@@ -10,41 +10,48 @@
 
 <body>
   <%- include("navbar") %>
+  
   <main class="add-product-container">
     <button class="return-btn" onclick="location.href = '/products'">
-      << Return to Products </button>
-        <form class="add-product-form" action="/products/add" method="POST" enctype="multipart/form-data">
-          <label for="product-name">Product Name:</label>
-          <input type="text" name="product-name" id="product-price" />
+      &lt;&lt; Return to Products
+    </button>
+    
+    <form class="add-product-form" action="/products/add" method="POST" enctype="multipart/form-data">
+      
+      <label for="productName">Product Name:</label>
+      <input type="text" name="productName" id="productName" required />
 
-          <label for="product-price">Product Price:</label>
-          <input type="number" name="product-price" id="product-price" min="0" />
+      <label for="productPrice">Product Price:</label>
+      <input type="number" name="productPrice" id="productPrice" min="0" step="0.01" required />
 
-          <label for="product-category">Product Category:</label>
-          <input type="text" name="product-category" id="product-category" />
+      <label for="productCategory">Product Category:</label>
+      <input type="text" name="productCategory" id="productCategory" required />
 
-          <label for="product-color">Product Category Color:</label>
-          <input type="color" id="product-color" name="product-color" value="#ff0000" />
+      <label for="productColor">Product Category Color:</label>
+      <input type="color" name="productColor" id="productColor" value="#ff0000" required/>
 
-          <label for="product-image">Product Image:</label>
-          <input type="file" name="product-image" id="prodcut-image" accept="image/*">
+      <label for="productImage">Product Image:</label>
+      <input type="file" name="productImage" id="productImage" accept="image/*" />
 
-          <label for="product-description">Product Description:</label>
-          <textarea name="product-description" id="product-description" rows="6"></textarea>
+      <label for="productDescription">Product Description:</label>
+      <textarea name="productDescription" id="productDescription" rows="6" required></textarea>
 
-          <label for="product-quantity">Product Quantity: </label>
-          <input type="number" id="product-quantity" name="product-quantity" min="1" />
-          <% if (locals.errors) {%>
-          <ul>
-            <% errors.forEach(function(error) { %>
+      <label for="productQuantity">Product Quantity: </label>
+      <input type="number" name="productQuantity" id="productQuantity" min="1" required />
+      
+      <% if (locals.errors) { %>
+        <ul class="error-list" style="padding:1rem">
+          <% locals.errors.forEach(function(error) { %>
             <li><%= error.msg %></li>
-            <% }); %>
-          </ul>
-          <% } %>
-          <button class="submit-add-product-btn" type="submit">
-            Submit Product
-          </button>
-        </form>
+          <% }); %>
+        </ul>
+      <% } %>
+      
+      <button class="submit-add-product-btn" type="submit">
+        Submit Product
+      </button>
+      
+    </form>
   </main>
 </body>
 

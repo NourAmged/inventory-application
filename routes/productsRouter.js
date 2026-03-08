@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const multer = require("multer");
 
 const getProductsPage = require("../controllers/getProductsPage");
 const getProductPage = require("../controllers/getProductPage");
@@ -9,6 +10,16 @@ const addProduct = require("../controllers/postProduct");
 
 const productsRouter = Router();
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "public/images");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage });
 
 productsRouter.get("/", getProductsPage);
 
@@ -17,7 +28,7 @@ productsRouter.get("/:id/", getProductPage);
 productsRouter.get("/:id/edit", getProductPage);
 
 productsRouter.patch("/edit", updateProduct);
-productsRouter.post("/add", addProduct)
+productsRouter.post("/add", upload.single('productImage'), addProduct);
 
 
 

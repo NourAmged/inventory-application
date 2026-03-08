@@ -18,10 +18,17 @@ async function patchProduct(id, data) {
     );
 }
 
-async function postProduct(productData, categoryColor) {
+async function postProduct(productData, categoryColor, filename) {
     const { productName, productPrice, productCategory,
-        productColor, productImage, productDescription,
+        productColor, productDescription,
         productQuantity } = productData;
+
+    await pool.query(
+        `
+        INSERT INTO products (name, category, price, quantity, description, image)
+        VALUES
+        ( ($1), ($2), ($3), ($4), ($5), ($6) );
+        `, [productName, productCategory, productPrice, productQuantity, productDescription, filename ? filename : '../images/fork-and-knife-with-plate-svgrepo-com.svg']);
 
 }
 
@@ -30,5 +37,5 @@ module.exports = {
     getProducts,
     getProduct,
     patchProduct,
-    postProduct 
+    postProduct
 };
