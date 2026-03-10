@@ -6,7 +6,7 @@ const getProductPage = require("../controllers/getProductPage");
 const getAddProductPage = require("../controllers/getAddProductPage");
 const updateProduct = require("../controllers/updateProduct");
 const addProduct = require("../controllers/postProduct");
-
+const getSearchProducts = require("../controllers/getSearchProducts");
 
 const productsRouter = Router();
 
@@ -23,7 +23,9 @@ const upload = multer({ storage });
 
 productsRouter.get("/", getProductsPage);
 
-productsRouter.get("/add", getAddProductPage)
+productsRouter.get("/search", getSearchProducts);
+productsRouter.get("/add", getAddProductPage);
+
 productsRouter.get("/:id/", getProductPage);
 productsRouter.get("/:id/edit", getProductPage);
 

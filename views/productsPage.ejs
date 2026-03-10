@@ -16,7 +16,7 @@
       <button class="add-product-btn" onclick="location.href='/products/add'">Add a Product</button>
     </header>
     <div class="products-container">
-      <div class="sidebar">
+      <form class="sidebar" method="GET" action="/products">
       <div class="sort-price">
         <h5>Sort By Price</h5>
         <div>
@@ -43,13 +43,14 @@
           <h5>Filter By Category:</h5>
           <% Object.keys(categoryColor).forEach(category => { %>
           <div>
-            <input type="checkbox" name=<%= category %> id="<%= category %>"/>
-            <label class="category-label" for="<%= category %>" style="background-color: <%= categoryColor[category] %>;"><%= category %></label>
+            <input type="checkbox" name="category" value=<%= category %> id="<%= category %>"/>
+            <label class="category-label" for="category" style="background-color: <%= categoryColor[category] %>;"><%= category %></label>
           </div>
           <% }); %>
         </div>
-        <button>Apply Filters</button>
-      </div>
+        <button type="submit">Apply Filters</button>
+      </form>
+
       <div class="products">
         <% products.forEach((product) => { %>
         <%- include('product', {product: product, categoryColor: categoryColor}); %>

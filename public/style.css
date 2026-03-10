@@ -8,6 +8,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
 .homepage-nav {
     display: flex;
     align-items: center;
@@ -101,7 +102,7 @@
     transform: translateY(-5px);
 }
 
-.main-products {
+.main-products, .searched-products {
     padding: 2rem 5rem;
 }
 

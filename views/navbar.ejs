@@ -13,8 +13,14 @@
     <a href="/products">Products</a>
     <a>Categories</a>
   </div>
-  <div>
-    <input class="search-input" type="text" placeholder="Search Products..." />
-    <button class="search-btn">Search</button>
-  </div>
+  <form method="GET" action="/products/search">
+    <input
+      name="search"
+      class="search-input"
+      type="text"
+      placeholder="Search Products..."
+    />
+
+    <button type="submit" class="search-btn">Search</button>
+  </form>
 </nav>

@@ -1,6 +1,7 @@
 const { body, validationResult, matchedData } = require("express-validator");
 const { postProduct } = require("../db/queries");
 const { categoryColor } = require("../categoryColor");
+const fs = require('fs');
 
 const validateProduct = [
     body("productName").trim()
@@ -26,14 +27,23 @@ const addProduct = [
     validateProduct,
     async (req, res) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).render("addProduct", { errors: errors.array() });
-        }
 
         let filename = null;
 
-        if (req.file && req.file.originalname)
+        if (req.file && req.file.originalname) {
             filename = `../images/${req.file.originalname}`;
+            filenameD = `public/images/${req.file.originalname}`; //for deletion
+        }
+
+        if (!errors.isEmpty()) {
+            if (filename)
+                fs.unlink(filenameD, (err) => {
+                    if (err)
+                        console.log(err);
+                });
+            return res.status(400).render("addProduct", { errors: errors.array() });
+        }
+
 
         const productData = matchedData(req);
 

@@ -1,9 +1,11 @@
 
 const pool = require('./pool');
 
-async function getProducts() {
+
+async function getProducts(filters) {
     const { rows } = await pool.query("SELECT * FROM products;");
     return rows;
+
 }
 
 async function getProduct(id) {
@@ -23,6 +25,8 @@ async function postProduct(productData, categoryColor, filename) {
         productColor, productDescription,
         productQuantity } = productData;
 
+    categoryColor[productCategory] = productColor;
+
     await pool.query(
         `
         INSERT INTO products (name, category, price, quantity, description, image)
@@ -30,12 +34,19 @@ async function postProduct(productData, categoryColor, filename) {
         ( ($1), ($2), ($3), ($4), ($5), ($6) );
         `, [productName, productCategory, productPrice, productQuantity, productDescription, filename ? filename : '../images/fork-and-knife-with-plate-svgrepo-com.svg']);
 
+
 }
 
+
+async function searchProducts(search) {
+    const { rows } = await pool.query(`SELECT * FROM products WHERE name LIKE ($1) `, [`%${search}%`]);
+    return rows;
+}
 
 module.exports = {
     getProducts,
     getProduct,
     patchProduct,
-    postProduct
+    postProduct,
+    searchProducts
 };
