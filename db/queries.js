@@ -2,8 +2,57 @@
 const pool = require('./pool');
 
 
+function customQuery(filters) {
+    const priceSort = filters["price-sort"];
+    const nameSort = filters["name-sort"];
+    let categories = filters["category"];
+
+    let sql = "SELECT * FROM products";
+
+    if (!Array.isArray(categories))
+        categories = [categories];
+
+    if (categories && categories.length > 0) {
+
+        let indices = "";
+        for (let i = 1; i <= categories.length; i++) {
+            indices += `$${i},`;
+        }
+        indices = indices.slice(0, -1);
+        sql += ` WHERE category IN (${indices})`;
+    }
+
+    const orderings = [];
+
+    const getSortDirection = (dir) => {
+        const safeDir = typeof dir === 'string' ? dir.toUpperCase() : '';
+        return safeDir === 'DESC' ? 'DESC' : 'ASC';
+    };
+
+    if (priceSort) {
+        orderings.push(`price ${getSortDirection(priceSort)}`);
+    }
+
+    if (nameSort) {
+        orderings.push(`name ${getSortDirection(nameSort)}`);
+    }
+
+    if (orderings.length > 0) {
+        sql += ` ORDER BY ${orderings.join(", ")}`;
+    }
+
+    sql += ";";
+    return { text: sql, values: categories };
+}
+
 async function getProducts(filters) {
-    const { rows } = await pool.query("SELECT * FROM products;");
+    if (Object.keys(filters).length === 0) {
+        const { rows } = await pool.query("SELECT * FROM products;");
+        return rows;
+    }
+
+    const { text, values } = customQuery(filters);
+    const { rows } = await pool.query(text, values);
     return rows;
 
 }
@@ -39,7 +88,7 @@ async function postProduct(productData, categoryColor, filename) {
 
 
 async function searchProducts(search) {
-    const { rows } = await pool.query(`SELECT * FROM products WHERE name LIKE ($1) `, [`%${search}%`]);
+    const { rows } = await pool.query(`SELECT * FROM products WHERE name LIKE ($1); `, [`%${search}%`]);
     return rows;
 }
 

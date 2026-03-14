@@ -7,5 +7,4 @@ async function getSearchProducts(req, res) {
     res.render("searchedProduct", { search: search, products: products, categoryColor: categoryColor });
 }
 
-
 module.exports = getSearchProducts;
