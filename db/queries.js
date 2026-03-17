@@ -1,6 +1,7 @@
 
 const pool = require('./pool');
-
+const categoryColor = require("../categoryColor");
+const fs = require('fs');
 
 function customQuery(filters) {
     const priceSort = filters["price-sort"];
@@ -92,10 +93,43 @@ async function searchProducts(search) {
     return rows;
 }
 
+async function DeleteProduct(id) {
+
+    const { rows } = await pool.query("DELETE FROM products WHERE id = $1 RETURNING category, image;", [id]);
+
+
+    const result = await pool.query("SELECT category FROM products;");
+
+    const categories = result.rows.map(row => {
+        return row.category;
+    });
+
+    const category = rows[0].category;
+    let image = rows[0].image;
+
+    const defaultImage = '../images/fork-and-knife-with-plate-svgrepo-com.svg';
+
+    if (!categories.includes(category))
+        delete categoryColor.categoryColor[category];
+
+    if (image !== defaultImage) {
+        const path = "public";
+        image += '.';
+        image = path + image.slice(2, -1);
+        fs.unlink(image, (err) => {
+            if (err)
+                console.log(err);
+        });
+    }
+
+
+}
+
 module.exports = {
     getProducts,
     getProduct,
     patchProduct,
     postProduct,
-    searchProducts
+    searchProducts,
+    DeleteProduct
 };

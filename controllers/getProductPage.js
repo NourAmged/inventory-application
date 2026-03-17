@@ -4,7 +4,6 @@ const { categoryColor } = require("../categoryColor");
 async function getProductPage(req, res) {
     const { id } = req.params;
     const edit = req.path.includes('edit');
-
     const [product] = await getProduct(id);
 
     if (!product) {

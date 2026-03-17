@@ -7,6 +7,7 @@ const getAddProductPage = require("../controllers/getAddProductPage");
 const updateProduct = require("../controllers/updateProduct");
 const addProduct = require("../controllers/postProduct");
 const getSearchProducts = require("../controllers/getSearchProducts");
+const deleteProduct = require("../controllers/deleteProduct");
 
 const productsRouter = Router();
 
@@ -31,6 +32,7 @@ productsRouter.get("/:id/edit", getProductPage);
 
 productsRouter.patch("/edit", updateProduct);
 productsRouter.post("/add", upload.single('productImage'), addProduct);
+productsRouter.get("/:id/delete", deleteProduct);
 
 
 
